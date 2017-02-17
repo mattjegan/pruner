@@ -31,6 +31,8 @@ class Raisins(object):
         return s
 
     def _cleanUp(self):
+        print('PLUM: deactivate')
+        self._call('deactivate', shell=True)
         print('PLUM: rm -rf plumtests')
         self._call('rm -rf plumtests', shell=True)
 
