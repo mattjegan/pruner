@@ -79,7 +79,7 @@ class Pruner(object):
         print(PROMPT + crayons.white('Writing results to {}'.format(self.outputFile), bold=True))
         with open(self.outputFile, 'w') as f:
             for r in self.requirements.keys():
-                if not self.requirements[r]:
+                if self.requirements[r]:
                     f.write(r + '\n')
         print(PROMPT + crayons.white('DONE', bold=True))
 
