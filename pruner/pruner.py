@@ -6,6 +6,10 @@ import argparse
 import os
 import subprocess
 
+import crayons
+
+PROMPT = crayons.magenta('PRUNER: ', bold=True)
+
 class Pruner(object):
 
     def __init__(self):
@@ -38,33 +42,33 @@ class Pruner(object):
         return s
 
     def _cleanUp(self):
-        print('PRUNER: deactivate')
+        print(PROMPT + 'deactivate')
         self._call('deactivate', shell=True)
-        print('PRUNER: rm -rf prunertests')
+        print(PROMPT + 'rm -rf prunertests')
         self._call('rm -rf prunertests', shell=True)
 
     def run(self):
         # Run initial test to make sure things work as is
-        print('PRUNER: Running initial test...')
+        print(PROMPT + 'Running initial test...')
         success = self._runTest(initial=True)
         if success:
-            print('PRUNER: Initial test was a success, beginning requirement tests...')
+            print(PROMPT + 'Initial test was a success, beginning requirement tests...')
         else:
-            print('PRUNER: Initial test was a failure, we cannot tell why, cleaning and exiting...')
+            print(PROMPT + 'Initial test was a failure, we cannot tell why, cleaning and exiting...')
             self._cleanUp()
 
         for r in self.requirements.keys():
-            print('PRUNER: Testing {}'.format(r))
+            print(PROMPT + 'Testing {}'.format(r))
             # Uninstall the requirement
             self._call(['pip', 'uninstall', '-y', r])
             # Run the test
             success = self._runTest()
             # Was the test successful?
             if success:
-                print('PRUNER: {} was not needed'.format(r))
+                print(PROMPT + crayons.red('{} was not needed'.format(r)))
                 self.requirements[r] = False
             else:
-                print('PRUNER: {} was needed'.format(r))
+                print(PROMPT + crayons.green('{} was needed'.format(r)))
             # Reinstall the req so that it doesn't change the other reqs results
             self._call(['pip', 'install', r])
 
@@ -72,12 +76,12 @@ class Pruner(object):
         self._cleanUp()
 
         # Output the results
-        print('PRUNER: Writing results to {}'.format(self.outputFile))
+        print(PROMPT + crayons.white('Writing results to {}'.format(self.outputFile), bold=True))
         with open(self.outputFile, 'w') as f:
             for r in self.requirements.keys():
                 if not self.requirements[r]:
                     f.write(r + '\n')
-        print('PRUNER: DONE')
+        print(PROMPT + crayons.white('DONE', bold=True))
 
     def _loadArgs(self):
         self.reqFile = self.args.requirements_file
@@ -88,14 +92,14 @@ class Pruner(object):
         self.requirements = {r.strip(): True for r in open(self.reqFile, mode='r')}
 
     def _loadVirtualEnv(self):
-        print('PRUNER: virtualenv prunertests')
+        print(PROMPT + 'virtualenv prunertests')
         self._call('virtualenv prunertests', shell=True)
-        print('PRUNER: source prunertests/bin/activate')
+        print(PROMPT + 'source prunertests/bin/activate')
         self._call('source prunertests/bin/activate', shell=True)
 
     def _installRequirements(self):
         # For the initial install we can just use the initial requirements file
-        print('PRUNER: pip install -r {}'.format(self.reqFile))
+        print(PROMPT + 'pip install -r {}'.format(self.reqFile))
         self._call(['pip', 'install', '-r', self.reqFile])
 
     def _runTest(self, initial=False):
