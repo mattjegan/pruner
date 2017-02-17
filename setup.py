@@ -1,17 +1,17 @@
-from setuptools import setup
+from distutils.core import setup
 
 setup(author='Matthew Egan',
       author_email='matthewj.egan@hotmai.com',
       description='A CLI tool for pruning your overgrown requirements file',
-      name='plum',
+      name='pruner',
       py_modules=[
-          'plum.plum',
+          'pruner.pruner',
       ],
       entry_points={
             'console_scripts': [
-                  'plum = plum.plum:main'
+                  'pruner = pruner.pruner:main'
             ]
       },
-      url='https://github.com/mattjegan/plum',
-      version='0.0.1'
+      url='https://github.com/mattjegan/pruner',
+      version='0.0.2'
 )
