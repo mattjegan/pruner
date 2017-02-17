@@ -2,12 +2,19 @@
 This CLI tool should be used with the following command:
     pruner <requirements_file> <output_file> <test_command>
 """
+import argparse
 import os
 import subprocess
-import sys
 
 class Pruner(object):
+
     def __init__(self):
+        parser = argparse.ArgumentParser(description='A CLI tool to help prune your overgrown requirements file')
+        parser.add_argument('requirements_file')
+        parser.add_argument('output_file')
+        parser.add_argument('test_command', nargs='*')
+        self.args = parser.parse_args()
+
         self._loadArgs()
         self._getRequirements()
         self._loadVirtualEnv()
@@ -33,8 +40,8 @@ class Pruner(object):
     def _cleanUp(self):
         print('PRUNER: deactivate')
         self._call('deactivate', shell=True)
-        print('PRUNER: rm -rf plumtests')
-        self._call('rm -rf plumtests', shell=True)
+        print('PRUNER: rm -rf prunertests')
+        self._call('rm -rf prunertests', shell=True)
 
     def run(self):
         # Run initial test to make sure things work as is
@@ -73,19 +80,18 @@ class Pruner(object):
         print('PRUNER: DONE')
 
     def _loadArgs(self):
-        self.args = sys.argv
-        self.reqFile = self.args[1]
-        self.outputFile = self.args[2]
-        self.testCommand = self.args[3:]
+        self.reqFile = self.args.requirements_file
+        self.outputFile = self.args.output_file
+        self.testCommand = self.args.test_command
 
     def _getRequirements(self):
         self.requirements = {r.strip(): True for r in open(self.reqFile, mode='r')}
 
     def _loadVirtualEnv(self):
-        print('PRUNER: virtualenv plumtests')
-        self._call('virtualenv plumtests', shell=True)
-        print('PRUNER: source plumtests/bin/activate')
-        self._call('source plumtests/bin/activate', shell=True)
+        print('PRUNER: virtualenv prunertests')
+        self._call('virtualenv prunertests', shell=True)
+        print('PRUNER: source prunertests/bin/activate')
+        self._call('source prunertests/bin/activate', shell=True)
 
     def _installRequirements(self):
         # For the initial install we can just use the initial requirements file
