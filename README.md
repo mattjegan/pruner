@@ -1,15 +1,18 @@
 # Pruner
+
+[![PyPI version](https://badge.fury.io/py/pruner.svg)](https://badge.fury.io/py/pruner)
+
 Pruner is your best friend when it comes to pruning your Python requirements file.
 Pruner will run over your requirements and test each one against your test command.
 If your projects test command fails then we know the package needs to remain in the requirements
 otherwise we prune it.
 
-# Installation
+## Installation
 ```
 pip install pruner
 ```
 
-# Usage
+## Usage
 
 ```
 usage: pruner.py [-h]
@@ -18,7 +21,7 @@ usage: pruner.py [-h]
 ```
 
 
-# Example
+## Example
 ```
 > pruner requirements.txt pruned_requirements.txt python myproj.py
 
@@ -61,3 +64,9 @@ import sys
 import django
 import rancat
 ```
+
+## Contributing
+
+### Submitting an issue or feature request
+
+If you find an issue or have a feature request please open an issue at [Github Pruner Repo](https://github.com/mattjegan/pruner).
