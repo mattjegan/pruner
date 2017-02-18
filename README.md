@@ -32,23 +32,21 @@ PRUNER: Running initial test...
 PRUNER: Initial test was a success, beginning requirement tests...
 PRUNER: Testing django
 PRUNER: django was needed
-PRUNER: Testing delegator
-PRUNER: delegator was not needed
+PRUNER: Testing garbagepackage1
+PRUNER: garbagepackage1 was not needed
 PRUNER: Testing rancat
 PRUNER: rancat was needed
-PRUNER: Testing flask
-PRUNER: flask was not needed
-PRUNER: Testing crayons
-PRUNER: crayons was not needed
-PRUNER: Testing requests
-PRUNER: requests was not needed
+PRUNER: Testing garbagepackage2
+PRUNER: garbagepackage2 was not needed
+PRUNER: Testing garbagepackage3
+PRUNER: garbagepackage3 was not needed
 PRUNER: deactivate
 PRUNER: rm -rf prunertests
 PRUNER: Writing results to pruned_requirements.txt
 PRUNER: DONE
 
 > cat requirements.txt
-garbagepackage3
+garbagepackage1
 rancat
 django
 garbagepackage1
