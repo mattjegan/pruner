@@ -15,7 +15,7 @@ pip install pruner
 ## Usage
 
 ```
-usage: pruner.py [-h] [--nocolor]
+usage: pruner.py [-h] [--nocolor] [--with_exit_code]
                  requirements_file output_file
                  [test_command [test_command ...]]
 
@@ -29,6 +29,7 @@ positional arguments:
 optional arguments:
   -h, --help         show this help message and exit
   --nocolor          turns off colored output
+  --with_exit_code   forces exit code to 1 if requirements needed pruning
 ```
 
 
