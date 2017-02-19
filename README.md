@@ -15,9 +15,20 @@ pip install pruner
 ## Usage
 
 ```
-usage: pruner.py [-h]
+usage: pruner.py [-h] [--nocolor]
                  requirements_file output_file
                  [test_command [test_command ...]]
+
+A CLI tool to help prune your overgrown requirements file
+
+positional arguments:
+  requirements_file  requirements file you want to prune
+  output_file        file to store the required requirements
+  test_command       command to run to test the project still works
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --nocolor          turns off colored output
 ```
 
 
