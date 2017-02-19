@@ -10,7 +10,7 @@ install:
 
 script:
 - pruner --help
-- py.test --cov-report= --cov=pruner --cov-config .coveragerc pruner/tests/
+- py.test --capture=sys --cov-report= --cov=pruner --cov-config .coveragerc pruner/tests/
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
