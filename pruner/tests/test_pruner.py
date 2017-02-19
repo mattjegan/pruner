@@ -95,7 +95,7 @@ class TestRanCat(unittest.TestCase):
         try:
             with patch.object(sys, 'argv', args):
                 p = Pruner()
-                s = p._call('ls', initial=True)
+                s = p._call('ls', shell=True, initial=True)
         except:
             assert 1 == 0
 
