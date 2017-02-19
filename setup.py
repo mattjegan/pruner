@@ -12,6 +12,9 @@ setup(author='Matthew Egan',
                   'pruner = pruner.pruner:main'
             ]
       },
+      install_requires=[
+            'crayons==0.1.2',
+      ],
       url='https://github.com/mattjegan/pruner',
       version='0.0.4'
 )
