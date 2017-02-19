@@ -59,6 +59,7 @@ class Pruner(object):
         else:
             print(self.PROMPT + 'Initial test was a failure, we cannot tell why, cleaning and exiting...')
             self._cleanUp()
+            sys.exit(1)
 
         for r in self.requirements.keys():
             print(self.PROMPT + 'Testing {}'.format(r))

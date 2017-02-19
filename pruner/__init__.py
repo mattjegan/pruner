@@ -1,1 +1,1 @@
-from pruner.pruner import main
+from pruner.pruner import Pruner, main
