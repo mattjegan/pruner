@@ -16,5 +16,5 @@ setup(author='Matthew Egan',
             'crayons==0.1.2',
       ],
       url='https://github.com/mattjegan/pruner',
-      version='0.0.5'
+      version='0.0.6'
 )
