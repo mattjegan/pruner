@@ -8,6 +8,11 @@ python:
 
 install:
 - python setup.py install
+- pip install -r pruner/tests/requirements.txt
 
 script:
 - pruner --help
+- py.test --cov-report= --cov=pruner pruner/tests/
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
