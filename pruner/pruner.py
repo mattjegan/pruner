@@ -5,6 +5,7 @@ This CLI tool should be used with the following command:
 import argparse
 import os
 import subprocess
+import sys
 
 import crayons
 
@@ -13,6 +14,8 @@ class Pruner(object):
     def __init__(self):
         parser = argparse.ArgumentParser(description='A CLI tool to help prune your overgrown requirements file')
         parser.add_argument('--nocolor', action='store_true', help='turns off colored output')
+        parser.add_argument('--with_exit_code', action='store_true', help='forces exit code to 1 if requirements '
+                                                                          'needed pruning')
         parser.add_argument('requirements_file', help='requirements file you want to prune')
         parser.add_argument('output_file', help='file to store the required requirements')
         parser.add_argument('test_command', nargs='*', help='command to run to test the project still works')
@@ -77,11 +80,17 @@ class Pruner(object):
 
         # Output the results
         print(self.PROMPT + crayons.white('Writing results to {}'.format(self.outputFile), bold=True))
+        clean = True
         with open(self.outputFile, 'w') as f:
             for r in self.requirements.keys():
                 if self.requirements[r]:
                     f.write(r + '\n')
+                else:
+                    clean = False
         print(self.PROMPT + crayons.white('DONE', bold=True))
+
+        if self.args.with_exit_code and not clean:
+            sys.exit(1)
 
     def _loadArgs(self):
         self.reqFile = self.args.requirements_file
