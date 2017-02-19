@@ -10,7 +10,7 @@ Pruner will run over your requirements and test each one against your test comma
 If your projects test command fails then we know the package needs to remain in the requirements
 otherwise we prune it.
 
-** *Requires Python 3.3+* **
+***Requires Python 3.3+***
 
 ## Installation
 ```
