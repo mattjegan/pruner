@@ -1,6 +1,7 @@
 # Pruner
 
 [![PyPI version](https://badge.fury.io/py/pruner.svg)](https://badge.fury.io/py/pruner)
+[![Code Triagers Badge](https://www.codetriage.com/mattjegan/pruner/badges/users.svg)](https://www.codetriage.com/mattjegan/pruner)
 
 Pruner is your best friend when it comes to pruning your Python requirements file.
 Pruner will run over your requirements and test each one against your test command.
