@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(author='Matthew Egan',
       author_email='matthewj.egan@hotmai.com',
@@ -13,5 +13,5 @@ setup(author='Matthew Egan',
             ]
       },
       url='https://github.com/mattjegan/pruner',
-      version='0.0.3'
+      version='0.0.4'
 )
