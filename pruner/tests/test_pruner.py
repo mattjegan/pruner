@@ -83,3 +83,20 @@ class TestRanCat(unittest.TestCase):
                 main()
 
         assert sysex.exception.code == 1
+
+    def test_call_initial_without_list(self):
+        args = [
+            'pruner',
+            '--nocolor',
+            'pruner/tests/fake_proj/requirements.txt',
+            'pruner/tests/fake_proj/output.txt',
+            'python', 'pruner/tests/fake_proj/fake_proj.py'
+        ]
+        try:
+            with patch.object(sys, 'argv', args):
+                p = Pruner()
+                s = p._call('ls', initial=True)
+        except:
+            assert 1 == 0
+
+        assert s == 0
