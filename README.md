@@ -1,5 +1,4 @@
 # Pruner
-
 [![PyPI version](https://badge.fury.io/py/pruner.svg)](https://badge.fury.io/py/pruner)
 [![Build Status](https://travis-ci.org/mattjegan/pruner.svg?branch=master)](https://travis-ci.org/mattjegan/pruner)
 [![codecov](https://codecov.io/gh/mattjegan/pruner/branch/master/graph/badge.svg)](https://codecov.io/gh/mattjegan/pruner)
